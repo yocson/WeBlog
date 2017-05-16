@@ -23,8 +23,8 @@ def add_yaml(in_file):
 
     yaml_dict = {
         "layout": "post",
-        "title": "%s" %title,
-        "subtitle": "%s" %subtitle,
+        "title": title,
+        "subtitle": subtitle,
         "date": date,
         "author": 'Yocson',
         "header-img": "img/%s.jgp" %img,
@@ -32,16 +32,17 @@ def add_yaml(in_file):
     }
 
     # 生成yaml文本
-    yaml_text = yaml.dump(yaml_dict,default_flow_style=False)
+    yaml_text = yaml.dump(yaml_dict, encoding='utf-8', default_flow_style=False)
+    print(yaml_text)
     # 与源文本合并
-    text = '---\n' + yaml_text + '---\n' + text
+    text = '---\n' + yaml_text.decode("unicode-escape") + '---\n' + text
 
     # 目标文本名字
     file_title = input("FILE_TITLE(EN)?")
     file_name = time.strftime("%Y-%m-%d", time.localtime()) + '-' + file_title
 
     # 输出成目标文本
-    output_file = codecs.open(file_name+".md", mode='w', encoding="utf-8")
+    output_file = codecs.open(file_name+".md", mode='w',encoding="utf8")
     output_file.write(text)
 
     input_file.close()
