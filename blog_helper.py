@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
-import codecs
-import yaml
 import time
 import sys
+import codecs
+import yaml
 
 
 
@@ -41,8 +41,9 @@ def add_yaml(in_file):
     file_title = input("FILE_TITLE(EN)?")
     file_name = time.strftime("%Y-%m-%d", time.localtime()) + '-' + file_title
 
+    blog_path = '/Users/KSH/Library/Mobile Documents/com~apple~CloudDocs/AlanKSH.github.io/_posts/'
     # 输出成目标文本
-    output_file = codecs.open(file_name+".md", mode='w',encoding="utf8")
+    output_file = codecs.open(blog_path+file_name+".md", mode='w', encoding="utf8")
     output_file.write(text)
 
     input_file.close()
