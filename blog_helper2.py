@@ -91,5 +91,5 @@ def upload_imgs(img_list, file_name):
 
 if __name__ == '__main__':
     in_file = sys.argv[1]
-    print(in_file)
+    #print(in_file)
     blog_helper(in_file)

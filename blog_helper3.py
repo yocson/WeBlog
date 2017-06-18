@@ -6,7 +6,7 @@ import codecs
 import yaml
 
 
-def add_yaml(in_file, parameters, out_file):
+def add_yaml(in_file, out_dir, parameters, out_file):
     # 打开源文件
     input_file = codecs.open(in_file, mode="r", encoding="utf-8")
     text = input_file.read()
@@ -17,7 +17,6 @@ def add_yaml(in_file, parameters, out_file):
     yaml_dict = {
         "layout": "post",
         "date": date,
-        "author": 'Yocson',
     }
 
     yaml_dict = dict(yaml_dict, **parameters)
@@ -31,9 +30,8 @@ def add_yaml(in_file, parameters, out_file):
     # 目标文本名字
     file_name = time.strftime("%Y-%m-%d", time.localtime()) + '-' + out_file
 
-    blog_path = '/Users/KSH/Library/Mobile Documents/com~apple~CloudDocs/AlanKSH.github.io/_posts/'
     # 输出成目标文本
-    output_file = codecs.open(blog_path+file_name+".md", mode='w', encoding="utf8")
+    output_file = codecs.open(out_dir + '/' + file_name + ".md", mode='w', encoding="utf8")
     output_file.write(text)
 
     input_file.close()
