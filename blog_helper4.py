@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""增加YAML并且将图片上传至七牛云，shell交互"""
+"""增加YAML并且将图片上传至七牛云，GUI交互"""
 
 import time
 import sys
@@ -9,29 +9,20 @@ from qiniu import Auth
 from qiniu import BucketManager, put_file, etag
 import config
 
-def blog_helper(in_file):
+
+def blog_helper(in_file, out_dir, parameters, out_file):
     # 打开源文件
     input_file = codecs.open(in_file, mode="r", encoding="utf-8")
     text = input_file.readlines()
 
-    # 询问输入
-    title = input("TITLE?")
-    subtitle = input("SUBTITLE?")
-    date = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()) 
-    img = input("IMG?")
-    tag = []
-    tag.append(input("TAG1?"))
-    tag.append(input("TAG2?"))
+    date = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
 
     yaml_dict = {
         "layout": "post",
-        "title": title,
-        "subtitle": subtitle,
         "date": date,
-        "author": 'Yocson',
-        "header-img": "img/%s.jgp" %img,
-        "tags": tag
     }
+
+    yaml_dict = dict(yaml_dict, **parameters)
 
     # 生成yaml文本
     yaml_text = yaml.dump(yaml_dict, encoding='utf-8', default_flow_style=False)
@@ -41,8 +32,7 @@ def blog_helper(in_file):
     yaml_text = '---\n' + yaml_text.decode("unicode-escape") + '---\n'
 
     # 目标文本名字
-    file_title = input("FILE_TITLE(EN)?")
-    file_name = time.strftime("%Y-%m-%d", time.localtime()) + '-' + file_title
+    file_name = time.strftime("%Y-%m-%d", time.localtime()) + '-' + out_file
 
     # 开始分析图片
     count = 0
@@ -65,14 +55,14 @@ def blog_helper(in_file):
     upload_imgs(img_list, file_name)
 
     # 输出成目标文本
-    output_file = codecs.open(config.BLOG_PATH+file_name+".md", mode='w', encoding="utf8")
+    output_file = codecs.open(out_dir + '/' + file_name + ".md", mode='w', encoding="utf8")
     output_file.writelines(yaml_text)
     output_file.writelines(new_text)
 
     input_file.close()
     output_file.close()
 
-def upload_imgs(img_list, file_name):    
+def upload_imgs(img_list, file_name):
     access_key = config.ACCESS_KEY
     secret_key = config.SECRET_KEY
 
@@ -89,8 +79,3 @@ def upload_imgs(img_list, file_name):
         ret, info = put_file(token, key, localfile)
         assert ret['key'] == key
         assert ret['hash'] == etag(localfile)
-
-if __name__ == '__main__':
-    in_file = sys.argv[1]
-    #print(in_file)
-    blog_helper(in_file)

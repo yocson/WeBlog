@@ -8,35 +8,27 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 import blog_helper3
+import blog_helper4
+import qiniu_update
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(407, 528)
+        MainWindow.resize(495, 528)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
-        self.lineEdit = QtWidgets.QLineEdit(self.centralwidget)
-        self.lineEdit.setGeometry(QtCore.QRect(165, 116, 113, 21))
-        self.lineEdit.setText("")
-        self.lineEdit.setObjectName("lineEdit")
-        self.label = QtWidgets.QLabel(self.centralwidget)
-        self.label.setGeometry(QtCore.QRect(91, 119, 71, 16))
-        self.label.setObjectName("label")
-        self.toolButton = QtWidgets.QToolButton(self.centralwidget)
-        self.toolButton.setGeometry(QtCore.QRect(285, 116, 26, 22))
-        self.toolButton.setObjectName("toolButton")
         self.buttonBox = QtWidgets.QDialogButtonBox(self.centralwidget)
-        self.buttonBox.setGeometry(QtCore.QRect(130, 430, 164, 32))
+        self.buttonBox.setGeometry(QtCore.QRect(160, 420, 164, 32))
         self.buttonBox.setStandardButtons(QtWidgets.QDialogButtonBox.Cancel|QtWidgets.QDialogButtonBox.Ok)
         self.buttonBox.setObjectName("buttonBox")
         self.label_2 = QtWidgets.QLabel(self.centralwidget)
-        self.label_2.setGeometry(QtCore.QRect(75, 36, 271, 51))
+        self.label_2.setGeometry(QtCore.QRect(110, 10, 271, 51))
         self.label_2.setMinimumSize(QtCore.QSize(0, 51))
         self.label_2.setStyleSheet("font: 30pt \".SF NS Text\";")
         self.label_2.setAlignment(QtCore.Qt.AlignCenter)
         self.label_2.setObjectName("label_2")
         self.horizontalLayoutWidget = QtWidgets.QWidget(self.centralwidget)
-        self.horizontalLayoutWidget.setGeometry(QtCore.QRect(85, 156, 241, 211))
+        self.horizontalLayoutWidget.setGeometry(QtCore.QRect(120, 190, 241, 211))
         self.horizontalLayoutWidget.setObjectName("horizontalLayoutWidget")
         self.horizontalLayout = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget)
         self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
@@ -89,19 +81,47 @@ class Ui_MainWindow(object):
         self.lineEdit_9.setObjectName("lineEdit_9")
         self.verticalLayout_2.addWidget(self.lineEdit_9)
         self.horizontalLayout.addLayout(self.verticalLayout_2)
-        self.lineEdit_8 = QtWidgets.QLineEdit(self.centralwidget)
-        self.lineEdit_8.setGeometry(QtCore.QRect(174, 377, 113, 21))
+        self.checkBox = QtWidgets.QCheckBox(self.centralwidget)
+        self.checkBox.setGeometry(QtCore.QRect(240, 160, 101, 20))
+        self.checkBox.setObjectName("checkBox")
+        self.checkBox_2 = QtWidgets.QCheckBox(self.centralwidget)
+        self.checkBox_2.setGeometry(QtCore.QRect(130, 160, 87, 20))
+        self.checkBox_2.setObjectName("checkBox_2")
+        self.horizontalLayoutWidget_2 = QtWidgets.QWidget(self.centralwidget)
+        self.horizontalLayoutWidget_2.setGeometry(QtCore.QRect(100, 80, 281, 31))
+        self.horizontalLayoutWidget_2.setObjectName("horizontalLayoutWidget_2")
+        self.horizontalLayout_2 = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget_2)
+        self.horizontalLayout_2.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
+        self.label = QtWidgets.QLabel(self.horizontalLayoutWidget_2)
+        self.label.setObjectName("label")
+        self.horizontalLayout_2.addWidget(self.label)
+        self.lineEdit = QtWidgets.QLineEdit(self.horizontalLayoutWidget_2)
+        self.lineEdit.setText("")
+        self.lineEdit.setObjectName("lineEdit")
+        self.horizontalLayout_2.addWidget(self.lineEdit)
+        self.toolButton = QtWidgets.QToolButton(self.horizontalLayoutWidget_2)
+        self.toolButton.setObjectName("toolButton")
+        self.horizontalLayout_2.addWidget(self.toolButton)
+        self.horizontalLayoutWidget_3 = QtWidgets.QWidget(self.centralwidget)
+        self.horizontalLayoutWidget_3.setGeometry(QtCore.QRect(100, 110, 281, 31))
+        self.horizontalLayoutWidget_3.setObjectName("horizontalLayoutWidget_3")
+        self.horizontalLayout_3 = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget_3)
+        self.horizontalLayout_3.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_3.setObjectName("horizontalLayout_3")
+        self.label_9 = QtWidgets.QLabel(self.horizontalLayoutWidget_3)
+        self.label_9.setObjectName("label_9")
+        self.horizontalLayout_3.addWidget(self.label_9)
+        self.lineEdit_8 = QtWidgets.QLineEdit(self.horizontalLayoutWidget_3)
         self.lineEdit_8.setText("")
         self.lineEdit_8.setObjectName("lineEdit_8")
-        self.toolButton_2 = QtWidgets.QToolButton(self.centralwidget)
-        self.toolButton_2.setGeometry(QtCore.QRect(294, 377, 26, 22))
+        self.horizontalLayout_3.addWidget(self.lineEdit_8)
+        self.toolButton_2 = QtWidgets.QToolButton(self.horizontalLayoutWidget_3)
         self.toolButton_2.setObjectName("toolButton_2")
-        self.label_9 = QtWidgets.QLabel(self.centralwidget)
-        self.label_9.setGeometry(QtCore.QRect(90, 380, 81, 20))
-        self.label_9.setObjectName("label_9")
+        self.horizontalLayout_3.addWidget(self.toolButton_2)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 407, 22))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 495, 22))
         self.menubar.setObjectName("menubar")
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
@@ -123,8 +143,6 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.label.setText(_translate("MainWindow", "原文件地址"))
-        self.toolButton.setText(_translate("MainWindow", "..."))
         self.label_2.setText(_translate("MainWindow", "博客助手"))
         self.label_3.setText(_translate("MainWindow", "title"))
         self.label_4.setText(_translate("MainWindow", "subtitle"))
@@ -133,8 +151,12 @@ class Ui_MainWindow(object):
         self.label_7.setText(_translate("MainWindow", "tag2"))
         self.label_8.setText(_translate("MainWindow", "author"))
         self.label_10.setText(_translate("MainWindow", "filename"))
-        self.toolButton_2.setText(_translate("MainWindow", "..."))
+        self.checkBox.setText(_translate("MainWindow", "图片上传七牛"))
+        self.checkBox_2.setText(_translate("MainWindow", "增加YAML"))
+        self.label.setText(_translate("MainWindow", "原文件地址"))
+        self.toolButton.setText(_translate("MainWindow", "..."))
         self.label_9.setText(_translate("MainWindow", "目标文件地址"))
+        self.toolButton_2.setText(_translate("MainWindow", "..."))
 
     def get_file(self):
         self.file_name = QtWidgets.QFileDialog.getOpenFileName(caption='open file', directory='/',filter='*.md')[0]
@@ -151,10 +173,16 @@ class Ui_MainWindow(object):
     def helper(self):
         if self.file_name:
             para_list = {'title': self.lineEdit_2.text(),
-                         'subtitle' : self.lineEdit_3.text(),
+                         'subtitle': self.lineEdit_3.text(),
                          'header-img': self.lineEdit_4.text(),
                          'tags': [self.lineEdit_5.text(), self.lineEdit_6.text()],
                          'author': self.lineEdit_7.text()
                          }
             new_filename = self.lineEdit_9.text()
-            blog_helper3.add_yaml(self.file_name, self.des_dirname, para_list, new_filename)
+            if self.checkBox.isChecked() and self.checkBox_2.isChecked():
+                blog_helper4.blog_helper(self.file_name, self.des_dirname, para_list, new_filename)
+            elif self.checkBox_2.isChecked():
+                blog_helper3.add_yaml(self.file_name, self.des_dirname, para_list, new_filename)
+            else:
+                qiniu_update.qiniu_update(self.file_name, self.des_dirname)
+

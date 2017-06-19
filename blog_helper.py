@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+"""给博客增加YAML，shell交互"""
 
 import time
 import sys

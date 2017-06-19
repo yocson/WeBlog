@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+"""GUI界面传入参数，增加YAML"""
 
 import time
 import sys
@@ -12,7 +13,6 @@ def add_yaml(in_file, out_dir, parameters, out_file):
     text = input_file.read()
 
     date = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
-
 
     yaml_dict = {
         "layout": "post",
