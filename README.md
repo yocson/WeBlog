@@ -1,15 +1,17 @@
 # Jekyllblog_helper
-用于生成带有YAML头信息的Jekyll博客文件
+A GUI tool creating YAML head for jekyllblog article, now working with qiniu update
 
-相关博文：
+> A jekyll article must have a YAML head containing some basic information.
+
+Related blogs：
 
 - [快速生成符合Jekyll格式的博客*一：移动端 - Ehurdas's Blog](http://yocson.com/2017/05/15/jekyllblogh1/)
 - [快速生成符合Jekyll格式的博客*二 ：电脑端 - Ehurdas's Blog](http://yocson.com/2017/05/16/jekyllblogh2/)
 
-## 用法：
+## Usage：
 python blog_helper.py \<file>
 
-## 生成：
+## YAML header created：
 ```YAML
 ---
 layout:     post
@@ -21,4 +23,4 @@ header-img: "img/.jpg"
 tags:
 ---
 ```
-带有以上YAML信息，输出符合jekyll文件名的博客文件
+
