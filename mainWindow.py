@@ -143,7 +143,7 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.label_2.setText(_translate("MainWindow", "博客助手"))
+        self.label_2.setText(_translate("MainWindow", "BlogHelper"))
         self.label_3.setText(_translate("MainWindow", "title"))
         self.label_4.setText(_translate("MainWindow", "subtitle"))
         self.label_5.setText(_translate("MainWindow", "img"))
@@ -151,11 +151,11 @@ class Ui_MainWindow(object):
         self.label_7.setText(_translate("MainWindow", "tag2"))
         self.label_8.setText(_translate("MainWindow", "author"))
         self.label_10.setText(_translate("MainWindow", "filename"))
-        self.checkBox.setText(_translate("MainWindow", "图片上传七牛"))
-        self.checkBox_2.setText(_translate("MainWindow", "增加YAML"))
-        self.label.setText(_translate("MainWindow", "原文件地址"))
+        self.checkBox.setText(_translate("MainWindow", "Upload imgs to Qiniu"))
+        self.checkBox_2.setText(_translate("MainWindow", "Add YAML"))
+        self.label.setText(_translate("MainWindow", "Source File"))
         self.toolButton.setText(_translate("MainWindow", "..."))
-        self.label_9.setText(_translate("MainWindow", "目标文件地址"))
+        self.label_9.setText(_translate("MainWindow", "Destination"))
         self.toolButton_2.setText(_translate("MainWindow", "..."))
 
     def get_file(self):
