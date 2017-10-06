@@ -1,4 +1,6 @@
-import sys
+"""
+This module contains a BlogHelper class
+"""
 import time
 import codecs
 import yaml
@@ -6,42 +8,67 @@ import config
 from qiniu import Auth
 from qiniu import BucketManager, put_file, etag
 
-
-class BlogHelper:
+class BlogHelper(object):
+    """Add YAML or Upload Images or Do Both"""
     def __init__(self, file_name, des_dirname, parameter_list, new_filename):
+        """
+        Constructor
+        :param file_name: file name with path
+        :param des_dirname: where the file is stored after operation
+        :param parameter_list: all YAML parameters
+        :param new_filename:  new file name
+        """
         self.file_name = file_name
         self.des_dirname = des_dirname
         self.parameter_list = parameter_list
-        self.new_filename = new_filename
+        self.new_filename = time.strftime("%Y-%m-%d", time.localtime()) + '-' + new_filename
 
-    def readfile(self, in_file):
-        input_file = codecs.open(in_file, mode="r", encoding="utf-8")
+    def readfile(self):
+        """
+        Read file into a list line by line
+        :param in_file: file path
+        """
+        input_file = codecs.open(self.file_name, mode="r", encoding="utf-8")
         text = input_file.readlines()
         input_file.close()
         return text
 
     def writefile(self, yaml_text, new_text):
+        """
+        write file to destination
+        :param yaml_text: yaml
+        :param new_text: all new text
+        """
         output_file = codecs.open(self.des_dirname + '/' + self.new_filename + ".md", mode='w', encoding="utf8")
         output_file.writelines(yaml_text)
         output_file.writelines(new_text)
 
         output_file.close()
 
-    def uploadimages(self, text):
+    def uploadimages(self, text = []):
+        """
+        test images and then upload using qiniu API
+        :param text: all text line by line
+        :returns: new_text
+        """
+        if text == []:
+            return []
+
+        # count images number
         count = 0
         img_list = []
         new_text = ''
 
         for line in text:
-            # 判断是否是图片
+            # check whether this line is a image or not
             if line[0:2] == '![':
-                # 本地地址加入待上传列表
+                # capture local path and save it to to-upload list
                 img_list.append(line.split('(')[1].split(')')[0])
-                # 生成新的图片格式
+                # for everyline create a new image URL based on order
                 line = '![%d](%s%s/%d.png)\n'\
                 %(count, config.LINK_DOMAIN, self.file_name.split('.')[0], count)
                 count += 1
-            # 加入新的输出文本中
+            # add back to new text list(wash original text)
             new_text += line
 
         access_key = config.ACCESS_KEY
@@ -61,23 +88,43 @@ class BlogHelper:
             assert ret['key'] == key
             assert ret['hash'] == etag(localfile)
 
+        return new_text
+
     def addyaml(self):
+        """
+        add YAML to form yamltext
+        :returns: yaml_text
+        """
+        # create date info
         date = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
 
+        # yaml dict with two basic info
         yaml_dict = {
             "layout": "post",
             "date": date,
         }
 
+        # add user yaml info into dict
         yaml_dict = dict(yaml_dict, **self.parameter_list)
 
-        # 生成yaml文本
+        # transfer dict to yaml text
         yaml_text = yaml.dump(yaml_dict, encoding='utf-8', default_flow_style=False)
         print(yaml_text)
 
-        # yaml文本前后增加---
+        # add '---' before and after YAML text
         yaml_text = '---\n' + yaml_text.decode("unicode-escape") + '---\n'
 
-        # 目标文本名字
-        self.new_filename = time.strftime("%Y-%m-%d", time.localtime()) + '-' + self.new_filename
+        return yaml_text
+
+if __name__ == '__main__':
+    PARA_LIST =  {'title': "fdf",
+                 'subtitle': "sdfsdf",
+                 'header-img': "asdfd",
+                 'author': "sdfasdf"
+                 }
+    bH = BlogHelper("/Users/KSH/Desktop/tessst.md", "/Users/KSH/Desktop", PARA_LIST, "testttt")
+    original_text = bH.readfile()
+    yaml_text = bH.addyaml()
+    text_after_up = bH.uploadimages(original_text)
+    bH.writefile(yaml_text, text_after_up)
 
