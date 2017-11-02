@@ -10,6 +10,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 import blog_helper3
 import blog_helper4
 import qiniu_update
+import BH
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -179,10 +180,23 @@ class Ui_MainWindow(object):
                          'author': self.lineEdit_7.text()
                          }
             new_filename = self.lineEdit_9.text()
+            bH = BH.BlogHelper(self.file_name, self.des_dirname, para_list, new_filename)
+            original_text = bH.readfile()
+            
+            #add yaml and upload images
             if self.checkBox.isChecked() and self.checkBox_2.isChecked():
-                blog_helper4.blog_helper(self.file_name, self.des_dirname, para_list, new_filename)
+                yaml_text = bH.addyaml()
+                text_after_up = bH.uploadimages(original_text)
+                bH.writefile(yaml_text, text_after_up)
+            #add yaml alone
             elif self.checkBox_2.isChecked():
-                blog_helper3.add_yaml(self.file_name, self.des_dirname, para_list, new_filename)
+                yaml_text = bH.addyaml()
+                bH.writefile(yaml_text, original_text)
+            #upload alone
             else:
-                qiniu_update.qiniu_update(self.file_name, self.des_dirname)
+                yaml_text = ""
+                text_after_up = bH.uploadimages(original_text)
+                bH.writefile(yaml_text, text_after_up)
+
+            
 
