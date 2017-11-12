@@ -26,9 +26,9 @@ You can also run the python file directly.
 
 `python main.py`
 
-![0](http://oc0d8ll0h.bkt.clouddn.com/README/0.png)
+![0](http://oc0d8ll0h.bkt.clouddn.com/readme/Screen%20Shot%202017-11-12%20at%203.11.11%20PM.png)
 
-![1](http://oc0d8ll0h.bkt.clouddn.com/README/1.png)
+![1](http://oc0d8ll0h.bkt.clouddn.com/readme/Screen%20Shot%202017-11-12%20at%203.11.29%20PM.png)
 
 ## Change Log
 
