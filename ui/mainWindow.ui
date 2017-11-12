@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>BLOGHELPER</class>
+ <widget class="QMainWindow" name="BLOGHELPER">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>430</width>
+    <height>772</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Main_blog_helper</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="5" column="0" colspan="2">
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <widget class="QLabel" name="filesrc">
+        <property name="font">
+         <font>
+          <family>mononoki</family>
+          <pointsize>15</pointsize>
+          <weight>50</weight>
+          <italic>false</italic>
+          <bold>false</bold>
+         </font>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 15pt &quot;mononoki&quot;;</string>
+        </property>
+        <property name="text">
+         <string>Source File</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="src">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="frame">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="choosefile">
+        <property name="text">
+         <string>...</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="6" column="0" colspan="2">
+     <layout class="QHBoxLayout" name="horizontalLayout_3">
+      <item>
+       <widget class="QLabel" name="filedes">
+        <property name="styleSheet">
+         <string notr="true">font: 15pt &quot;mononoki&quot;;</string>
+        </property>
+        <property name="text">
+         <string>File Desination</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLineEdit" name="des">
+        <property name="text">
+         <string/>
+        </property>
+        <property name="frame">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QToolButton" name="choosedes">
+        <property name="text">
+         <string>...</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="13" column="0" colspan="2">
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout">
+        <item>
+         <widget class="QLabel" name="filetitle">
+          <property name="styleSheet">
+           <string notr="true">font: 15pt &quot;mononoki&quot;;</string>
+          </property>
+          <property name="text">
+           <string>Title</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="categories">
+          <property name="styleSheet">
+           <string notr="true">font: 15pt &quot;mononoki&quot;;</string>
+          </property>
+          <property name="text">
+           <string>Categories</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="tag1">
+          <property name="styleSheet">
+           <string notr="true">font: 15pt &quot;mononoki&quot;;</string>
+          </property>
+          <property name="text">
+           <string>Tag1</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="tag2">
+          <property name="styleSheet">
+           <string notr="true">font: 15pt &quot;mononoki&quot;;</string>
+          </property>
+          <property name="text">
+           <string>Tag2</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="tag3">
+          <property name="styleSheet">
+           <string notr="true">font: 15pt &quot;mononoki&quot;;</string>
+          </property>
+          <property name="text">
+           <string>Tag3</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="author">
+          <property name="styleSheet">
+           <string notr="true">font: 15pt &quot;mononoki&quot;;</string>
+          </property>
+          <property name="text">
+           <string>Author</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="filename">
+          <property name="styleSheet">
+           <string notr="true">font: 15pt &quot;mononoki&quot;;</string>
+          </property>
+          <property name="text">
+           <string>Filename</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QVBoxLayout" name="verticalLayout_2">
+        <item>
+         <widget class="QLineEdit" name="filetitle_text">
+          <property name="frame">
+           <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="categories_text">
+          <property name="frame">
+           <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="tag1_text">
+          <property name="frame">
+           <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="tag2_text">
+          <property name="frame">
+           <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="tag3_text">
+          <property name="frame">
+           <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="author_text">
+          <property name="frame">
+           <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLineEdit" name="filename_text">
+          <property name="frame">
+           <bool>false</bool>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </item>
+    <item row="8" column="0">
+     <widget class="QCheckBox" name="addfm">
+      <property name="styleSheet">
+       <string notr="true">font: 20pt &quot;mononoki&quot;;</string>
+      </property>
+      <property name="text">
+       <string>Add Front Matter(YAML)</string>
+      </property>
+     </widget>
+    </item>
+    <item row="16" column="0">
+     <widget class="QCheckBox" name="uploadimg">
+      <property name="styleSheet">
+       <string notr="true">font: 20pt &quot;mononoki&quot;;</string>
+      </property>
+      <property name="text">
+       <string>Upload Images</string>
+      </property>
+     </widget>
+    </item>
+    <item row="21" column="0" colspan="2">
+     <layout class="QHBoxLayout" name="horizontalLayout_4">
+      <item>
+       <widget class="QPushButton" name="quit">
+        <property name="styleSheet">
+         <string notr="true">font: 15pt &quot;mononoki&quot;;</string>
+        </property>
+        <property name="text">
+         <string>Quit!</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="run">
+        <property name="styleSheet">
+         <string notr="true">font: 15pt &quot;mononoki&quot;;</string>
+        </property>
+        <property name="text">
+         <string>Run</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item row="18" column="0">
+     <spacer name="horizontalSpacer_3">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>40</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="17" column="0">
+     <widget class="QLabel" name="label_4">
+      <property name="styleSheet">
+       <string notr="true">font: 16pt &quot;mononoki&quot;;
+color:rgb(102, 102, 102)</string>
+      </property>
+      <property name="text">
+       <string>Make sure you have already set your account</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLabel" name="Title">
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>51</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>72</pointsize>
+        <weight>50</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 72pt;</string>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:36pt; font-weight:600;&quot;&gt;Blog Helper&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="7" column="0">
+     <spacer name="horizontalSpacer">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeType">
+       <enum>QSizePolicy::Expanding</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>40</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="14" column="0">
+     <spacer name="horizontalSpacer_2">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>40</width>
+        <height>20</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
+    <item row="4" column="0">
+     <widget class="QLabel" name="label_3">
+      <property name="styleSheet">
+       <string notr="true">font: 16pt &quot;mononoki&quot;;
+color:rgb(102, 102, 102)</string>
+      </property>
+      <property name="text">
+       <string>Choose file and file destination:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QLabel" name="label_5">
+      <property name="styleSheet">
+       <string notr="true">font: 16pt &quot;mononoki&quot;;
+color:rgb(102, 102, 102)</string>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+    </item>
+    <item row="10" column="0">
+     <widget class="QLabel" name="label_2">
+      <property name="styleSheet">
+       <string notr="true">font: 16pt &quot;mononoki&quot;;
+color:rgb(102, 102, 102)</string>
+      </property>
+      <property name="text">
+       <string>Enter your front matter information:</string>
+      </property>
+     </widget>
+    </item>
+    <item row="22" column="0" colspan="2">
+     <widget class="QTextBrowser" name="textBrowser"/>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>430</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuSettings">
+    <property name="title">
+     <string>Settings</string>
+    </property>
+    <addaction name="actionAccounts"/>
+   </widget>
+   <addaction name="menuSettings"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionAccounts">
+   <property name="text">
+    <string>Accounts</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>quit</sender>
+   <signal>clicked()</signal>
+   <receiver>BLOGHELPER</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>136</x>
+     <y>425</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>261</x>
+     <y>303</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
