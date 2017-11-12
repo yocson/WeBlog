@@ -10,7 +10,7 @@ from qiniu import BucketManager, put_file, etag
 
 class BlogHelper(object):
     """Add YAML or Upload Images or Do Both"""
-    def __init__(self, file_name, des_dirname, parameter_list, new_filename):
+    def __init__(self, file_name, des_dirname, parameter_list, new_filename, key_list):
         """
         Constructor
         :param file_name: file name with path
@@ -22,6 +22,10 @@ class BlogHelper(object):
         self.des_dirname = des_dirname
         self.parameter_list = parameter_list
         self.new_filename = time.strftime("%Y-%m-%d", time.localtime()) + '-' + new_filename
+        self.ACCESS_KEY = key_list[0]
+        self.SECRET_KEY = key_list[1]
+        self.LINK_DOMAIN = key_list[2]
+        self.BUCKET_NAME = key_list[3]
 
     def readfile(self):
         """
@@ -33,13 +37,16 @@ class BlogHelper(object):
         input_file.close()
         return text
 
-    def writefile(self, yaml_text, new_text):
+    def writefile(self, yaml_text, new_text, useOriname):
         """
         write file to destination
         :param yaml_text: yaml
         :param new_text: all new text
         """
-        output_file = codecs.open(self.des_dirname + '/' + self.new_filename + ".md", mode='w', encoding="utf8")
+        if (useOriname):
+            output_file = codecs.open(self.file_name, mode='w', encoding="utf8")
+        else:
+            output_file = codecs.open(self.des_dirname + '/' + self.new_filename + ".md", mode='w', encoding="utf8")
         output_file.writelines(yaml_text)
         output_file.writelines(new_text)
 
@@ -66,21 +73,21 @@ class BlogHelper(object):
                 img_list.append(line.split('(')[1].split(')')[0])
                 # for everyline create a new image URL based on order
                 line = '![%d](%s%s/%d.png)\n'\
-                %(count, config.LINK_DOMAIN, self.file_name.split('.')[0], count)
+                %(count, self.LINK_DOMAIN, self.file_name.split('.')[0].split('/')[-1], count)
                 count += 1
             # add back to new text list(wash original text)
             new_text += line
 
-        access_key = config.ACCESS_KEY
-        secret_key = config.SECRET_KEY
+        access_key = self.ACCESS_KEY
+        secret_key = self.SECRET_KEY
 
         q = Auth(access_key, secret_key)
         bucket = BucketManager(q)
 
-        bucket_name = config.BUCKET_NAME
+        bucket_name = self.BUCKET_NAME
 
         for index, img in enumerate(img_list):
-            key = '%s/%d.png'%(self.file_name.split('.')[0], index)
+            key = '%s/%d.png'%(self.file_name.split('.')[0].split('/')[-1], index)
             token = q.upload_token(bucket_name, key, 3600)
             localfile = img
 
