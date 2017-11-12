@@ -288,25 +288,25 @@ class Ui_BLOGHELPER(object):
                          'author': self.author_text.text()
                          }
             new_filename = self.filename_text.text()
-            bH = BH.BlogHelper(self.file_name, self.des_dirname, para_list, new_filename, self.key_list)
-            original_text = bH.readfile()
+            self.bH = BH.BlogHelper(self.file_name, self.des_dirname, para_list, new_filename, self.key_list)
+            original_text = self.bH.readfile()
             
             #add yaml and upload images
             if self.addfm.isChecked() and self.uploadimg.isChecked():
-                yaml_text = bH.addyaml()
-                text_after_up = bH.uploadimages(original_text)
-                bH.writefile(yaml_text, text_after_up, False)
+                yaml_text = self.bH.addyaml()
+                text_after_up = self.bH.uploadimages(original_text)
+                self.bH.writefile(yaml_text, text_after_up, False)
                 self.textBrowser.setText(yaml_text)
             #add yaml alone
             elif self.addfm.isChecked():
-                yaml_text = bH.addyaml()
-                bH.writefile(yaml_text, original_text, False)
+                yaml_text = self.bH.addyaml()
+                self.bH.writefile(yaml_text, original_text, False)
                 self.textBrowser.setText(yaml_text)
             #upload alone
             else:
                 yaml_text = ""
-                text_after_up = bH.uploadimages(original_text)
-                bH.writefile(yaml_text, text_after_up, True)
+                text_after_up = self.bH.uploadimages(original_text)
+                self.bH.writefile(yaml_text, text_after_up, True)
                 self.textBrowser.setText("Images uploaded Successfully!")
 
 if __name__ == "__main__":
