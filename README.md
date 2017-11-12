@@ -1,25 +1,19 @@
-# Jekyllblog_helper
-A GUI tool creating YAML head for jekyllblog article, now working with qiniu update
+# WeBlog
+A user-friendly GUI tool creating front matter for jekyll/hexo blog article, now working with qiniu cloud image hosting.
 
-> A jekyll article must have a YAML head containing some basic information.
-
-Related blogs：
-
-- [快速生成符合Jekyll格式的博客*一：移动端 - Ehurdas's Blog](http://yocson.com/2017/05/15/jekyllblogh1/)
-- [快速生成符合Jekyll格式的博客*二 ：电脑端 - Ehurdas's Blog](http://yocson.com/2017/05/16/jekyllblogh2/)
+version: 0.1.0
 
 ## Usage：
-`python blog_helper.py \<file>`
+Download src/dist/WeBlog, run on you computer.
 
 ## YAML header created：
 ```YAML
 ---
 layout:     post
 title:      ""
-subtitle:   ""
 date: 
 author: ""
-header-img: "img/.jpg"
+categories:
 tags:
 ---
 ```
@@ -28,7 +22,9 @@ tags:
 
 ## New GUI Application
 
-`python ui.py`
+You can also run the python file directly.
+
+`python main.py`
 
 ### UI
 
