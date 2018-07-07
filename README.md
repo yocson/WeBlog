@@ -1,25 +1,19 @@
-# Jekyllblog_helper
-A GUI tool creating YAML head for jekyllblog article, now working with qiniu update
+# WeBlog
+A user-friendly GUI tool creating front matter for jekyll/hexo blog article, now working with qiniu cloud image hosting.
 
-> A jekyll article must have a YAML head containing some basic information.
-
-Related blogs：
-
-- [快速生成符合Jekyll格式的博客*一：移动端 - Ehurdas's Blog](http://yocson.com/2017/05/15/jekyllblogh1/)
-- [快速生成符合Jekyll格式的博客*二 ：电脑端 - Ehurdas's Blog](http://yocson.com/2017/05/16/jekyllblogh2/)
+version: 0.1.0
 
 ## Usage：
-`python blog_helper.py \<file>`
+Download src/dist/WeBlog, run on you computer.
 
-## YAML header created：
+## Front Matter created：
 ```YAML
 ---
 layout:     post
 title:      ""
-subtitle:   ""
 date: 
 author: ""
-header-img: "img/.jpg"
+categories:
 tags:
 ---
 ```
@@ -28,16 +22,19 @@ tags:
 
 ## New GUI Application
 
-`python ui.py`
+You can also run the python file directly.
 
-### UI
+`python main.py`
 
-![0](http://oc0d8ll0h.bkt.clouddn.com/README/0.png)
+![0](http://oc0d8ll0h.bkt.clouddn.com/readme/Screen%20Shot%202017-11-12%20at%203.11.11%20PM.png)
 
-![1](http://oc0d8ll0h.bkt.clouddn.com/README/1.png)
+![1](http://oc0d8ll0h.bkt.clouddn.com/readme/Screen%20Shot%202017-11-12%20at%203.11.29%20PM.png)
 
+## Change Log
 
+**2017-11-12:**
 
-![2](http://oc0d8ll0h.bkt.clouddn.com/README/2.png)
-
-![3](http://oc0d8ll0h.bkt.clouddn.com/README/3.png)
+- Update App
+- Rename
+- Optimize UI
+- Support Customized Account for Qiniu Cloud
